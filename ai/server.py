@@ -10,7 +10,6 @@ from minio_service import MinioService
 from ml import load_video
 app = FastAPI()
 
-# Configure Gemini API keys
 # Folder to temporarily store uploaded files
 UPLOAD_DIR = "./uploads"
 if not os.path.exists(UPLOAD_DIR):
