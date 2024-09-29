@@ -1,0 +1,103 @@
+services:
+  traefik:
+    image: "traefik"
+    container_name: "traefik"
+    command:
+      # - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.grafana.address=:3000"
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "${GRAFANA_PORT}:3000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  backend:
+    container_name: backend
+    build:
+      context: backend
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ../video-markup/.env
+    depends_on:
+      - postgres
+      - minio
+      - redis
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`${HOST}`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.backend.entrypoints=web"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+  
+  ai:
+    container_name: ai
+    build:
+      context: ../video-markup/ai
+      dockerfile: ../video-markup/ai/Dockerfile
+    env_file:
+      - ../video-markup/.env
+    depends_on:
+      - backend
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+    ports:
+      - "${MINIO_PORT}:9000"
+      - "${MINIO_CONSOLE_PORT}:9001"
+    volumes:
+      - ./volumes/minio:/data
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+    depends_on:
+      - postgres
+    volumes:
+      - ./volumes/grafana:/var/lib/grafana
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`${HOST}`)"
+      - "traefik.http.routers.grafana.entrypoints=grafana"
+      - "traefik.http.services.grafana.loadbalancer.server.port=3000"
+
+  redis:
+    image: redis:7.0-alpine
+    container_name: redis
+    volumes:
+      - ./volumes/redis:/data
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ../video-markup/web
+      dockerfile: ../video-markup/web/Dockerfile
+    command: "npm run host"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`${HOST}`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.services.frontend.loadbalancer.server.port=4173"

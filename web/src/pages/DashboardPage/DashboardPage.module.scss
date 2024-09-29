@@ -1,0 +1,72 @@
+.container {
+  background-color: #fff;
+  padding: 16px;
+  margin: 16px;
+  height: 80vh;
+
+  display: grid;
+  grid-template-areas:
+    'general general'
+    'timeline details';
+
+  grid-template-columns: min-content auto;
+  grid-template-rows: min-content auto;
+  gap: 36px;
+}
+
+.generalInfo {
+  grid-area: general;
+}
+
+.intervalDetails {
+  grid-area: details;
+}
+
+.timeline {
+  grid-area: timeline;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-wrap: nowrap;
+
+  height: 100%;
+  overflow-y: auto;
+}
+
+.timelineBlock {
+  width: 280px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: #00000031;
+  }
+}
+
+.description {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.tags {
+  display: flex;
+  gap: 24px;
+  margin: 24px;
+}
+
+.tagBlock {
+  padding: 16px;
+}
+
+.timestamp {
+  text-wrap: nowrap;
+  margin-left: 8px;
+}

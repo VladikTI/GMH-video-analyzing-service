@@ -1,0 +1,23 @@
+.container {
+  height: fit-content;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.list {
+  max-width: 100%;
+  flex-wrap: wrap;
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+.description {
+  max-height: 100px;
+  overflow-y: auto;
+  margin: 8px 0;
+}

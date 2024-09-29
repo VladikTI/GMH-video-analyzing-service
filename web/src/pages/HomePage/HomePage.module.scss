@@ -1,0 +1,39 @@
+.page {
+  display: grid;
+  grid-template-areas:
+    'add list'
+    'filters list';
+
+  grid-template-columns: 200px auto;
+  grid-template-rows: 44px auto;
+  gap: 16px;
+  padding: 16px;
+  height: 80vh;
+}
+
+.add {
+  background-color: #fff;
+  grid-area: add;
+}
+
+.list {
+  background-color: #fff;
+  grid-area: list;
+  padding: 16px;
+
+  display: grid;
+  grid-template-rows: 40px 600px;
+}
+
+.listWrapper {
+  overflow-y: auto;
+}
+
+.filters {
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+  grid-area: filters;
+
+  overflow-y: auto;
+}
