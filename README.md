@@ -43,42 +43,29 @@
 
 ---
 
-## **Пример работы web-сервиса**
+## **Пример загрузки видео**
 
-***Часть 1:***
-
-<p align="center">
-    <img src="docs/web1.jpg" alt="Логотип проекта" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
-</p>
-
-***Часть 2:***
+***Загрзучик файла:***
 
 <p align="center">
-    <img src="docs/web2.jpg" alt="Логотип проекта" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
+    <img src="docs/screen1.png" alt="Загрзучик файла" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
 </p>
 
-
-
-## **Пример работы TG-бота**
-
-***Часть 1:***
+***Просмотр информции о разметке:***
 
 <p align="center">
-    <img src="docs/1photo.png" alt="Логотип проекта" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
+    <img src="docs/screen2.png" alt="Просмотр информции о разметке" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
 </p>
 
-***Часть 2:***
+
+
+## **Пример поиска по меткам**
+
+***Поиск по категории и транскрибированной речи:***
 
 <p align="center">
-    <img src="docs/2photo.png" alt="Логотип проекта" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
+    <img src="docs/screen3.png" alt="Поиск" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
 </p>
-
-***Часть 3:***
-
-<p align="center">
-    <img src="docs/3photo.png" alt="Логотип проекта" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
-</p>
-
 
 ---
 
