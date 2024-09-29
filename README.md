@@ -76,4 +76,3 @@
 <p align="center">
     <img src="docs/screen4.png" alt="График" width="900" style="display: inline-block; vertical-align: middle; margin-right: 10px;"/>  <br/>
 </p>
----
