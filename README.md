@@ -19,9 +19,12 @@
 
 **Архитектура решения**
 **Технологии**
-- **ML Pipline**: ruRoBERTa-large, CatBoost, YandexGPT 3
-- **Веб-приложение**: React, Node JS
+- **ML Pipline**: Clap, Whisper-large-v3, InternVL2-8B, GigaChat, ZhengPeng7/BiRefNet
+- **Веб-приложение**: React, FastApi
+- **Базы данных**: PostgreSQL, Redis
+- **Файловое хранилище**: Minio
 - **Балансировка нагрузки**: Traefik
+- **Дашборд**: Grafana
 
 
 # **Использование**
@@ -30,13 +33,13 @@
 + 2 вариант, в docker
   - Клонируйте репозиторий: ```git clone https://github.com/VladikTI/GMH-video-analyzing-service.git```
   - запустить все миикросервисы из docker-compose: ```docker-compose up```
- 
++ 3 просмотр дашборда доступен по [ссылке](http://194.87.26.211:3000/)
 
 
 
 ---
 
-[Screencast](https://drive.google.com/file/d/1B_-eNaIec-sj3MxIPmCyZqv6nUNWF4VT/view?usp=drive_link) наших сервисов
+[Screencast](https://disk.yandex.ru/i/7L2D8G5zPMsnrw) наших сервисов
 
 ---
 
