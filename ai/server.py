@@ -2,7 +2,6 @@ import logging
 import os
 import sys
 
-import google.generativeai as genai
 from fastapi import FastAPI
 from pydantic import BaseModel
 
